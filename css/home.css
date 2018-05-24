@@ -54,7 +54,6 @@ a:hover{
 #users{
     height: calc(100% - 48px);
     overflow-y: auto;
-    overflow-x: none;
 }
 
 #messages{
@@ -82,4 +81,21 @@ button{
 }
 button:hover{
     text-decoration: underline;
+}
+.friends{
+    padding: 5px 0;
+}
+section{
+    position: relative;
+}
+.friends:before{
+    content: '';
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }
