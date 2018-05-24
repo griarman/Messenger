@@ -35,7 +35,7 @@ class Messages
 
 		foreach ($optionalKeys as $key => $value)
 		{
-			if(empty(trim($params[$key])))
+			if(!isset($params[$key]))
 			{
 				$params[$key] = $value;
 			}
@@ -45,18 +45,18 @@ class Messages
 			}
 		}
 
-		$messages = $this->db->query("SELECT * FROM " . self::TABLE . " WHERE (`senderId` = '{$params['senderId']}' AND `getterId` = '{$params['getterId']}') OR (`getterId` = '{$params['senderId']}' AND `senderId` = '{$params['getterId']}')");
+		$messages = $this->db->query("SELECT * FROM " . self::TABLE . " WHERE (`senderId` = '{$params['senderId']}' AND `getterId` = '{$params['getterId']}') OR (`getterId` = '{$params['senderId']}' AND `senderId` = '{$params['getterId']}') LIMIT {$params['offset']}, {$params['limit']}");
 
 		return $messages ?: [];
 	}
 
 	public function addMessage(array $params = [])
 	{
-		$fields = ['senderId', 'getterId', 'message'];
+		$fields = ['senderId', 'getterId', 'message','date'];
 
 		foreach ($fields as $field)
 		{
-			if(empty(trim($params[$field])))
+			if(@empty(trim($params[$field])))
 			{
 				die(ucfirst($field) . " parameter is required in " . __METHOD__ . ' method in ' . __CLASS__ . ' class');
 			}
@@ -65,8 +65,7 @@ class Messages
 				$params[$field] = addslashes(trim($params[$field]));
 			}
 		}
-
-		return $this->db->query("INSERT INTO " . self::TABLE . " (" . implode(',', $fields). ") VALUES ('{$params['senderId']}', '{$params['getterId']}', '{$params['message']}')");
+		return $this->db->query("INSERT INTO " . self::TABLE . " (" . implode(',', $fields). ") VALUES ('{$params['senderId']}', '{$params['getterId']}', '{$params['message']}','{$params['date']}')");
 	}
 
 	public function __destruct()

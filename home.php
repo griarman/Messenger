@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="icon" href="images/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/home.js"></script>
+
 </head>
 <body>
     <div id="container">

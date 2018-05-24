@@ -83,10 +83,16 @@ button:hover{
     text-decoration: underline;
 }
 .friends{
-    padding: 5px 0;
-}
-section{
+    padding-top: 5px;
+    padding-bottom: 10px;
+    cursor: pointer;
     position: relative;
+}
+.friends:hover{
+    color: #0084ff;
+}
+.checked{
+    background-color: rgba(0, 0, 0, .05);
 }
 .friends:before{
     content: '';

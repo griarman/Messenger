@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/reg.css">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/main.js"></script>
+
 </head>
 <body>
 	<form action="auth-reg/auth.php" id="form1" method="post">

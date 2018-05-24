@@ -27,9 +27,10 @@ class User
         $login = $registration['login'];
         $password = $registration['password'];
         $retype = $registration['retype'];
-        $this->isEmpty($login,$password,$retype);
-        $this->checkEquality($password,$retype);
-        $this->isLoginExists($login);
+        if($this->isEmpty($login,$password,$retype) || $this->checkEquality($password,$retype) || $this->isLoginExists($login))
+        {
+            return false;
+        }
         $keys = $this->getKeys($registration);
         $fields = $this->getFields($registration);
         return $this->db->query("INSERT INTO ". self::TABLE ."(".implode(',',$keys).") VALUES ('".implode("','",$fields)."')");
@@ -67,19 +68,17 @@ class User
 	private function isEmpty($login = '',$password = '',$retype = '')
     {
         if(empty($login) || empty($password) || empty($retype)){
-            header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
-            die;
+            return true;
         }
-        return;
+        return false;
     }
     private function checkEquality($password,$retype)
     {
         if($password !== $retype)
         {
-            header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
-            die;
+            return true;
         }
-        return;
+        return false;
     }
     public function getUsers($login)
     {
