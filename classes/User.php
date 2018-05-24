@@ -81,5 +81,9 @@ class User
         }
         return;
     }
-
+    public function getUsers($login)
+    {
+        $answer = $this->db->query("SELECT login FROM users WHERE login!='$login'");
+        return $answer ? $answer : null;
+    }
 }

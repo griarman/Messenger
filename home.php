@@ -4,6 +4,7 @@
         header('Location:index.php');
         die;
     }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,20 @@
     <div id="container">
         <div id="left">
             <div id="title">Messages</div>
-            <div id="users"></div>
+            <div id="users">
+                <?php
+                    require_once 'classes/User.php';
+                    require_once 'model.php';
+                    $obj = new User;
+                    $users = $obj->getUsers($_SESSION['login']);
+                    if($users){
+                       for($i = 0; $i < count($users); $i++){
+                          echo "<section class='friends'>{$users[$i]['login']}</section>";
+                       }
+                    }
+
+                ?>
+            </div>
         </div>
         <div id="right">
             <div id="name">
