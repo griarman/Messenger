@@ -21,5 +21,27 @@ $(document).ready(function(){
 
        });
     });
+    $('#send').click(function () {
+       let message = $('#sms').val().trim();
+       if(!message){
+           return;
+
+       }
+       let userName = $('.checked').html();
+
+       $.ajax({
+           url: 'addMessage.php',
+           method: 'POST',
+           data:{
+               message: message,
+               username:userName
+           },
+           success:function () {
+               $('#sms').val('');
+           }
+
+       });
+
+    });
 
 });

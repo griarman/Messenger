@@ -40,10 +40,16 @@
                 <div>Name</div>
                 <div><a href="exit.php">Log Out</a></div>
             </div>
-            <div id="messages"></div>
+            <div id="messages">
+                <?php
+//                    require_once 'addMessage.php';
+                    require_once 'classes/Messages.php';
+                    $obj = new Messages;
+                ?>
+            </div>
             <div id="inputHeader">
-                <input type="text" placeholder="Введите сообщение...">
-                <button type="button">Отправить</button>
+                <input type="text" placeholder="Введите сообщение..." id="sms">
+                <button type="button" id="send">Отправить</button>
             </div>
         </div>
     </div>
