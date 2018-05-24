@@ -22,7 +22,6 @@
             <div id="users">
                 <?php
                     require_once 'classes/User.php';
-                    require_once 'model.php';
                     $obj = new User;
                     $users = $obj->getUsers($_SESSION['login']);
                     if($users){
@@ -30,7 +29,6 @@
                           echo "<section class='friends'>{$users[$i]['login']}</section>";
                        }
                     }
-
                 ?>
             </div>
         </div>
