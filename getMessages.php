@@ -4,4 +4,5 @@ require_once 'classes/Messages.php';
 $obj = new Messages;
 $messages = $obj->getMessages(['senderId' => $_SESSION['login'], 'getterId' => $_POST['userName']]);
 
-print_r($messages);
+$messages = json_encode($messages);
+echo $messages;

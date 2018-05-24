@@ -41,11 +41,8 @@
                 <div><a href="exit.php">Log Out</a></div>
             </div>
             <div id="messages">
-                <?php
-//                    require_once 'addMessage.php';
-                    require_once 'classes/Messages.php';
-                    $obj = new Messages;
-                ?>
+                <div id="messageFirst"></div>
+                <div id="messageSecond"></div>
             </div>
             <div id="inputHeader">
                 <input type="text" placeholder="Введите сообщение..." id="sms">

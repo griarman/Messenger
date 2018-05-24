@@ -1,5 +1,9 @@
 <?php
 
+    if(empty(trim($_POST['message']))){
+        echo false;
+        die;
+    }
     date_default_timezone_set('Asia/Yerevan');
     $date =  date('Y-m-d H:i:s');
     session_start();

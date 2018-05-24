@@ -22,6 +22,7 @@ html,body{
     text-align: center;
     font-size: 1.6em;
     border: 1px solid #ccc;
+    cursor: context-menu;
 }
 #left{
     width: 25%;
@@ -38,11 +39,12 @@ html,body{
     flex-direction: row;
 }
 #name>:first-child{
-    width: 85%;
+    width: 75%;
 }
 #name>:last-child{
     font-size: .8em;
     width: 25%;
+    border-left: 1px solid #ccc;
 }
 a{
     color: #000;
@@ -52,12 +54,14 @@ a:hover{
     text-decoration: underline;
 }
 #users{
-    height: calc(100% - 48px);
+    /*height: calc(100% - 48px);*/
     overflow-y: auto;
 }
 
 #messages{
     height: calc(100% - 97px);
+    display: flex;
+    flex-direction: row;
 }
 
 #inputHeader{
@@ -104,4 +108,27 @@ button:hover{
     position: absolute;
     top: 5px;
     left: 5px;
+}
+#messageFirst{
+    width: 75%;
+    height: 100%;
+    border-right: .5px solid #ccc;
+    box-sizing: border-box;
+}
+#messageSecond{
+    width: 25%;
+    height: 100%;
+    /*background: url(../images/1.gif) no-repeat;
+    background-size: 99% 100%;*/
+}
+.left,.right{
+    width: 80%;
+    padding: 5px 0;
+    margin: 0 auto;
+}
+.left{
+    text-align: left;
+}
+.right{
+    text-align: right;
 }
