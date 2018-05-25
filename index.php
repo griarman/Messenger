@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Chat</title>
+    <title>Messenger</title>
+    <link rel="icon" href="images/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/reg.css">
     <script src="js/jquery-3.3.1.js"></script>

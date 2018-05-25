@@ -24,7 +24,6 @@ $(document).ready(function(){
                 userName: userName
             },
             success:function (data) {
-                console.log(data);
                 let field = $('#messageFirst');
                 field.empty();
                 let count = Object.keys(data).length;
@@ -42,7 +41,6 @@ $(document).ready(function(){
             }
         });
     }
-
 
     $('#send').click(function () {
        let message = $('#sms').val().trim();
@@ -62,6 +60,8 @@ $(document).ready(function(){
            }
        });
     });
-    // setInterval(getMessage,1000);
+    setInterval(function() {
+        getMessage.call($friends.filter('.checked')[0]);
+    },1000);
 
 });
