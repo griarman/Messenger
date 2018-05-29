@@ -4,7 +4,7 @@ session_start();
 
 require_once 'classes/User.php';
 $obj = new User;
-$answer = $obj->deleteCookie($_SESSION['login']);
+$obj->deleteCookie($_SESSION['login']);
 
 
 session_destroy();

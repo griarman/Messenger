@@ -2,7 +2,7 @@
 
 session_start();
 require_once '../classes/User.php';
-$obj = new USER;
+$obj = new User;
 $_POST['name'] = addslashes($_POST['name']);
 if(!isset($_POST['remember'])){
     $_POST['remember'] = false;
@@ -15,7 +15,7 @@ if($answer) {
     die;
 }
 else{
-    $_SESSION['error'] = 'There aren\'t such kind of login and password combination';
+    $_SESSION['error'] = 'There arn\'t such kind of login and password combination';
     echo $_SESSION['error'];
     header('Location:../index.php');
     die;

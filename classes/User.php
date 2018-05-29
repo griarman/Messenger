@@ -12,17 +12,14 @@ class User
 	}
 	public function signIn($login = '',$password = '',$checked = false)
 	{
-
 		$login = trim($login);
 		$password = md5($password);
-		if($checked){
-		    $date = $this->getDate();
-		    $token = $this->tokenGenerator($login);
-		    $this->addCookie($token,$date,$login);
-
-        }
 		$answer = $this->db->query("SELECT login, password FROM users WHERE login='$login' AND password='$password'");
-
+        if($answer && $checked){
+            $date = $this->getDate();
+            $token = $this->tokenGenerator($login);
+            $this->addCookie($token,$date,$login);
+        }
 		return $answer ? $answer[0] : null;
 	}
 	private function getDate()
@@ -49,7 +46,6 @@ class User
     public function deleteCookie($user)
     {
         return $this->db->query("DELETE FROM `token` WHERE `userId`='$user'");
-
     }
 	public function registration($registration = [])
     {
@@ -82,7 +78,6 @@ class User
 	public function isLoginExists($login)
     {
         $answer = $this->db->query("SELECT login FROM users WHERE login = '$login'");
-
         return !empty($answer);
     }
     private function getKeys($reg)

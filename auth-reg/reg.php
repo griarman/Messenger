@@ -2,7 +2,7 @@
 
 session_start();
 require_once '../classes/User.php';
-$obj = new USER;
+$obj = new User;
 $answer = $obj->registration(['login' => $_POST['login'],'password' => $_POST['psw'],'retype' => $_POST['psw-repeat']]);
 
 if($answer) {
