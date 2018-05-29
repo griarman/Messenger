@@ -1,3 +1,20 @@
+<?php
+session_start();
+    if(isset($_COOKIE['tkn'])){
+        require_once 'classes/User.php';
+        date_default_timezone_set('Asia/Yerevan');
+        $obj = new User;
+        $answer = $obj->checkCookie($_COOKIE['tkn'],time());
+        if($answer){
+            $_SESSION['login'] = $answer['userId'];
+            header('Location:home.php');
+            die;
+        }
+        echo "<div class='danger'>PLEASE DON'T TRY TO DO SUCH AWFUL THINGS</div>";
+        die;
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +31,7 @@
 	<form action="auth-reg/auth.php" id="form1" method="post">
 		<div class="container">
 			<label for="uname"><b>Username</b></label>
-			<input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+			<input type="text" placeholder="Enter Username" name="name" id="uname" required>
 
 		<label for="psw"><b>Password</b></label>
 		<input type="password" placeholder="Enter Password" name="psw" id="psw" required>
@@ -24,7 +41,7 @@
 			<input type="checkbox" checked="checked" name="remember"> Remember me
 		</label>
         <?php
-        session_start();
+
         if(isset($_SESSION['error'])){
             echo "<div class='error'>{$_SESSION['error']}</div>";
         }

@@ -41,7 +41,10 @@ span.psw {
     float: right;
     padding-top: 16px;
 }
-
+.danger{
+    font-size: 2em;
+    color: red;
+}
 
 span#reg {
     cursor: pointer;
@@ -51,6 +54,10 @@ span#reg {
 .signin {
     background-color: #f1f1f1;
     text-align: center;
+}
+.error{
+    background: yellow;
+    color: red;
 }
 @media screen and (max-width: 300px) {
     span.psw {

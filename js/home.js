@@ -31,10 +31,10 @@ $(document).ready(function(){
                 let userName = $('.checked').html();
                 for(let i = 0; i < count; i++){
                     if(data[i].senderId === userName){
-                        sec = $(`<section class="left" title="${data[i].date}">${data[i].message}</section>`);
+                        sec = $(`<section class="left"><span title="${data[i].date}">${data[i].message}</span></section>`);
                     }
                     else if(data[i].getterId === userName){
-                        sec = $(`<section class="right" title="${data[i].date}">${data[i].message}</section>`);
+                        sec = $(`<section class="right"><span title="${data[i].date}">${data[i].message}</span></section>`);
                     }
                     field.append(sec);
                 }

@@ -10,15 +10,47 @@ class User
 	{
 		$this->db = new DB;
 	}
-	public function signIn($login = '',$password = '')
+	public function signIn($login = '',$password = '',$checked = false)
 	{
+
 		$login = trim($login);
 		$password = md5($password);
+		if($checked){
+		    $date = $this->getDate();
+		    $token = $this->tokenGenerator($login);
+		    $this->addCookie($token,$date,$login);
+
+        }
 		$answer = $this->db->query("SELECT login, password FROM users WHERE login='$login' AND password='$password'");
 
 		return $answer ? $answer[0] : null;
 	}
+	private function getDate()
+    {
+        date_default_timezone_set('Asia/Yerevan');
+        $date =  time()+24*3600*7;
+        return $date;
+    }
+	private function tokenGenerator($str)
+    {
+        $str = md5(uniqid($str));
+        return $str;
+    }
+	private function addCookie($token,$date,$login){
+        $this->db->query("INSERT INTO `token`(`token`, `expireDate`,`userId`) VALUES ('$token','$date','$login')");
+        setcookie('tkn',$token,time()+24*7*3600,'/');
+    }
+    public function checkCookie($token,$date)
+    {
+        $token = addslashes($token);
+        $answer = $this->db->query("SELECT `userId` FROM `token` WHERE token='$token' AND expireDate >= '$date'");
+        return $answer ? $answer[0] : false;
+    }
+    public function deleteCookie($user)
+    {
+        return $this->db->query("DELETE FROM `token` WHERE `userId`='$user'");
 
+    }
 	public function registration($registration = [])
     {
         $registration['login'] = trim($registration['login']);

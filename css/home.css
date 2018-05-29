@@ -72,7 +72,7 @@ a:hover{
 #inputHeader>input{
     height: 100%;
     border: 0;
-    width: 80%;
+    width: 75%;
     text-indent: 15px;
 
 }
@@ -114,21 +114,33 @@ button:hover{
     height: 100%;
     border-right: .5px solid #ccc;
     box-sizing: border-box;
+    overflow: auto;
 }
 #messageSecond{
     width: 25%;
     height: 100%;
-    /*background: url(../images/1.gif) no-repeat;
-    background-size: 99% 100%;*/
+    background: url(../images/1.gif) no-repeat;
+    background-size: 100% 100%;
 }
 .left,.right{
     width: 80%;
-    padding: 5px 0;
+    padding-top: 10px;
     margin: 0 auto;
+    font-size: .8em;
 }
 .left{
     text-align: left;
 }
 .right{
     text-align: right;
+}
+.right span{
+    background: #4080FF;
+    color: white;
+    padding: 2.5px 10px;
+    border-radius: 15px;
+}
+.error{
+    background: yellow;
+    color: red;
 }
